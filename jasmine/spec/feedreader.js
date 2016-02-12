@@ -19,7 +19,7 @@ $(function() {
          * empty. Experimented with allFeeds in app.js to be an 
          * empty array and refreshed the page.
          */
-        it('are defined', function() {
+        it('feeds defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -48,12 +48,12 @@ $(function() {
     describe('The menu', function() {
 
         // Test ensures the menu "element" is hidden by default.
-        it('is hidden by default', function() {
+        it('hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         // This test validates proper functioning of the var menu toggle.
-        it('changes visibility when icon clicked', function() {
+        it('toggles visibility when icon clicked', function() {
             var clickedIcon = $('.menu-icon-link');
 
             // This tests for menu display.
@@ -77,15 +77,31 @@ $(function() {
         });
 
         // tests for at least one entry in feed.
-        it('should be called and contain at least one feed.', function() {
+        it('should have at least one feed', function() {
             expect($('.entry').length).toBeGreaterThan(0);
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    // New Feed Selection test suite
+    describe('New Feed Selection', function() {
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        // tests that new content is loaded by loadFeed().
+        var $feedOne;
+        var $feedTwo;
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                feedOne = $('.feed').html();
+                done();
+            });
+        });
+
+        it('content changed after loading feed', function(done) {
+            loadFeed(1, function() {
+                feedTwo = $('.feed').html();
+                expect(feedTwo).not.toEqual(feedOne);
+                done();
+            });
+        });
+    });
 }());

@@ -13,13 +13,13 @@ Tests that are green have passed and red have failed.
 
 # The tests:
 
-1. tests to make sure that the allFeeds variable has been defined and that it is not empty.
-2. loops through each feed and determines if the URL is defined and not empty.
-3. loops through each feed and determines that each feed has a name and not empty.
+1. Edit then test to make sure that the allFeeds object is defined.
+2. loop through the feeds, determines if the URL is defined, is not empty.
+3. loops through the feed, determines that each feed has a name, is not empty.
 4. ensures the menu element is hidden by default.
-5. validates proper functioning of the hamburger menu toggle.
-6. tests that there is at least one entry in feed.
-7. tests that new content is loaded by loadFeed().
+5. validates passing function of the clickIcon menu toggle.
+6. test there is at minumum one entry in feeds.
+7. test there is new content loaded by loadFeed.
 
 # To complete this project.
 
